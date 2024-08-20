@@ -93,8 +93,9 @@ Ayush Portal is on a mission to transform the entrepreneurial landscape in India
 ## 👩‍💻Team Members
 
 - [T.V.Vishalkirthik]
-- [Sarang Kadukar](https://github.com/Apurv428)
-- [Aryan Seth](https://github.com/harshilshah99)
-- [Atharva](https://github.com/vorachaitya)
-- [Mayuri](https://github.com/NamanKothari5)
-- [Yashraj Kulkarni](https://github.com/KunalA18)
+- [Sarang Kadukar]
+- [Aryan Seth]
+- [Atharva]
+- [Mayuri]
+- [Yashraj Kulkarni]
+
