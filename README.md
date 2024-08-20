@@ -92,9 +92,9 @@ Ayush Portal is on a mission to transform the entrepreneurial landscape in India
 
 ## 👩‍💻Team Members
 
-- [Pratiksha Sankhe](https://github.com/psankhe28)
-- [Apurv Sonawane](https://github.com/Apurv428)
-- [Harshil Shah](https://github.com/harshilshah99)
-- [Chaitya Vora](https://github.com/vorachaitya)
-- [Naman Kothari](https://github.com/NamanKothari5)
-- [Kunal Agarwal](https://github.com/KunalA18)
+- [T.V.Vishalkirthik]
+- [Sarang Kadukar](https://github.com/Apurv428)
+- [Aryan Seth](https://github.com/harshilshah99)
+- [Atharva](https://github.com/vorachaitya)
+- [Mayuri](https://github.com/NamanKothari5)
+- [Yashraj Kulkarni](https://github.com/KunalA18)
