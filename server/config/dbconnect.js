@@ -8,7 +8,6 @@ function connect() {
     autoIndex: process.env.NODE_ENV !== "prod"
   };
 
-  let connectionString = "mongodb://localhost:27017/startup";
   if (process.env.NODE_ENV === "prod") {
     connectionString = process.env.MONGO_URI_PROD;
   }

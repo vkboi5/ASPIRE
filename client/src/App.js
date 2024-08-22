@@ -17,7 +17,7 @@ import Info from "./pages/Startup_Dashboard/Info/Info";
 import StartupPosts from "./pages/Startup_Dashboard/Posts/Posts"
 import MentorData from "./pages/Startup_Dashboard/Mentor/Mentor";
 import CreatePostForm from "./pages/Startup_Dashboard/CreatePost/Post.js"
-
+import Dashboard from "./components/Dashboard.jsx";
 
 import InvestorDashboard from "./pages/Investor_Dashboard/Dashboard/index";
 import InvestorProfile from "./pages/Investor_Dashboard/Profile";
@@ -42,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPg />} />
           <Route path="/login" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/investor/dashboard" element={<InvestorDashboard />} />
           <Route path="/investor/profile" element={<InvestorProfile />} />
           <Route path="/investor/posts" element={<InvestorPosts />} />
