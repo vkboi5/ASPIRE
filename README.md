@@ -61,6 +61,9 @@ Ayush Portal is on a mission to transform the entrepreneurial landscape in India
 ## 📊Flowchart
 ![LoginSignup](https://github.com/psankhe28/pre-sih/assets/82211574/27fd3808-e118-4462-98a3-5b233dc79c2d)
 
+## Figma
+https://www.figma.com/design/mKsvTmddyMeRvnxvjhVpB7/AYUSH?node-id=0-1&t=GGjsCOyYIXbAp50p-1
+
 
 ## 🔗Assets
 
