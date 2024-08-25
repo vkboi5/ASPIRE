@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
-import  './Dashboard.css'
+import './DashboardUnique.css'; // Updated CSS file name
 
-const Dashboard = () => {
+const DashboardUnique = () => {
     const demographicsChartRef = useRef(null);
     const utilizationChartRef = useRef(null);
 
@@ -16,10 +16,10 @@ const Dashboard = () => {
         };
 
         // Update dashboard numbers
-        document.getElementById('total-patients').textContent = hospitalData.totalPatients;
-        document.getElementById('today-appointments').textContent = hospitalData.todayAppointments;
-        document.getElementById('available-beds').textContent = hospitalData.availableBeds;
-        document.getElementById('staff-on-duty').textContent = hospitalData.staffOnDuty;
+        document.querySelector('.dashboard-unique #total-patients').textContent = hospitalData.totalPatients;
+        document.querySelector('.dashboard-unique #today-appointments').textContent = hospitalData.todayAppointments;
+        document.querySelector('.dashboard-unique #available-beds').textContent = hospitalData.availableBeds;
+        document.querySelector('.dashboard-unique #staff-on-duty').textContent = hospitalData.staffOnDuty;
 
         // Destroy existing charts if they exist
         if (demographicsChartRef.current) {
@@ -30,7 +30,7 @@ const Dashboard = () => {
         }
 
         // Initialize Demographics Chart
-        const demographicsCtx = document.getElementById('demographics-chart').getContext('2d');
+        const demographicsCtx = document.querySelector('.dashboard-unique #demographics-chart').getContext('2d');
         demographicsChartRef.current = new Chart(demographicsCtx, {
             type: 'pie',
             data: {
@@ -43,7 +43,7 @@ const Dashboard = () => {
         });
 
         // Initialize Department Utilization Chart
-        const utilizationCtx = document.getElementById('utilization-chart').getContext('2d');
+        const utilizationCtx = document.querySelector('.dashboard-unique #utilization-chart').getContext('2d');
         utilizationChartRef.current = new Chart(utilizationCtx, {
             type: 'bar',
             data: {
@@ -64,20 +64,7 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div>
-            <header>
-                <h1>MediCore Hospital Dashboard</h1>
-                <nav>
-                    <ul>
-                        <li><a href="#overview">Overview</a></li>
-                        <li><a href="#patient-registration">Patient Registration</a></li>
-                        <li><a href="#appointments">Appointments</a></li>
-                        <li><a href="#ehr">EHR</a></li>
-                        <li><a href="#analytics">Analytics</a></li>
-                    </ul>
-                </nav>
-            </header>
-
+        <div className="dashboard-unique">
             <main>
                 <section id="overview">
                     <h2>Overview</h2>
@@ -123,4 +110,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default DashboardUnique;

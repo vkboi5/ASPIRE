@@ -1,38 +1,23 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #f4f4f4;
-}
-
-header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
-
-nav ul {
+.dashboard-unique nav ul {
     list-style-type: none;
     padding: 0;
 }
 
-nav ul li {
+.dashboard-unique nav ul li {
     display: inline;
     margin: 0 10px;
 }
 
-nav ul li a {
+.dashboard-unique nav ul li a {
     color: white;
     text-decoration: none;
 }
 
-main {
+.dashboard-unique main {
     padding: 2rem;
 }
 
-section {
+.dashboard-unique section {
     background-color: white;
     margin-bottom: 2rem;
     padding: 1rem;
@@ -40,85 +25,85 @@ section {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-h2 {
+.dashboard-unique h2 {
     color: #2c3e50;
 }
 
-.dashboard-grid, .analytics-grid {
+.dashboard-unique .dashboard-grid, .dashboard-unique .analytics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 }
 
-.dashboard-item, .analytics-item {
+.dashboard-unique .dashboard-item, .dashboard-unique .analytics-item {
     background-color: #ecf0f1;
     padding: 1rem;
     border-radius: 5px;
     text-align: center;
 }
 
-.large-number {
+.dashboard-unique .large-number {
     font-size: 2rem;
     font-weight: bold;
     color: #2980b9;
 }
 
-form {
+.dashboard-unique form {
     display: grid;
     gap: 1rem;
 }
 
-input, textarea, button {
+.dashboard-unique input, .dashboard-unique textarea, .dashboard-unique button {
     padding: 0.5rem;
 }
 
-button {
+.dashboard-unique button {
     background-color: #2980b9;
     color: white;
     border: none;
     cursor: pointer;
 }
 
-button:hover {
+.dashboard-unique button:hover {
     background-color: #3498db;
 }
 
-.appointment-grid {
+.dashboard-unique .appointment-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 1rem;
 }
 
-.appointment-calendar {
+.dashboard-unique .appointment-calendar {
     background-color: #ecf0f1;
     padding: 1rem;
     border-radius: 5px;
 }
 
-.appointment-list {
+.dashboard-unique .appointment-list {
     background-color: #ecf0f1;
     padding: 1rem;
     border-radius: 5px;
 }
 
-.ehr-search {
+.dashboard-unique .ehr-search {
     display: flex;
     margin-bottom: 1rem;
 }
 
-.ehr-search input {
+.dashboard-unique .ehr-search input {
     flex-grow: 1;
     margin-right: 0.5rem;
 }
 
-#ehr-results {
+.dashboard-unique #ehr-results {
     background-color: #ecf0f1;
     padding: 1rem;
     border-radius: 5px;
     min-height: 200px;
 }
 
-footer {
+.dashboard-unique footer {
     background-color: #2c3e50;
     color: white;
     text-align: center;

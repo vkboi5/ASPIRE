@@ -1,0 +1,96 @@
+/* General Styles */
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+}
+
+.wrapper {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styles */
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.text-large {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+}
+
+.text-normal {
+  font-size: 14px;
+  color: #777;
+}
+
+.text-links {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.text-links:hover {
+  text-decoration: underline;
+}
+
+/* Input Styles */
+.input-field {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #3182ce;
+  outline: none;
+}
+
+/* Submit Button Styles */
+.input-submit {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #3182ce;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input-submit:hover {
+  background-color: #2b6cb0;
+}
+
+.input-submit:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Link Styles */
+a.text-links {
+  font-size: 14px;
+  color: #3182ce;
+}
+
+a.text-links:hover {
+  text-decoration: underline;
+}
