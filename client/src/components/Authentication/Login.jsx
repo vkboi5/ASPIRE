@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Button,
   FormControl,
@@ -8,20 +9,19 @@ import {
   Stack,
   useToast,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./LoginForm.css"; // Your custom CSS
 
 const Login = () => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const toast = useToast();
-  const navigate = useNavigate();
-
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
+
+  const toast = useToast();
+  const navigate = useNavigate();
 
   const handleCredentials = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -30,7 +30,6 @@ const Login = () => {
   const submitHandler = async () => {
     setLoading(true);
 
-    // If email or password is missing
     if (!credentials.email || !credentials.password) {
       toast({
         title: "Please Fill all the Fields",
@@ -50,36 +49,33 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email: credentials.email,
-          password: credentials.password,
-        }),
+        body: JSON.stringify(credentials),
       });
       const data = await response.json();
 
       toast({
         title: data.message,
-        status: !data.success ? "error" : "success",
+        status: data.success ? "success" : "error",
         duration: 5000,
         isClosable: true,
         position: "bottom-right",
-        variant: !data.success ? "left-accent" : "solid",
+        variant: data.success ? "solid" : "left-accent",
       });
 
       if (data.success) {
         localStorage.setItem("userInfo", JSON.stringify(data));
         setLoading(false);
 
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        if (userInfo && userInfo.userType === "startUp") {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+        if (userInfo.userType === "startUp") {
           navigate("/startup/dashboard");
-        } else if (userInfo && userInfo.userType === "incubator") {
+        } else if (userInfo.userType === "incubator") {
           navigate("/incubator/dashboard");
-        } else if (userInfo && userInfo.userType === "govtAgency") {
+        } else if (userInfo.userType === "govtAgency") {
           navigate("/yettobedone");
-        } else if (userInfo && userInfo.userType === "mentor") {
+        } else if (userInfo.userType === "mentor") {
           navigate("/yettobedone");
-        } else if (userInfo && userInfo.userType === "investor") {
+        } else if (userInfo.userType === "investor") {
           navigate("/investor/dashboard");
         } else {
           navigate("/yetobedone");
@@ -89,7 +85,7 @@ const Login = () => {
       }
     } catch (error) {
       setLoading(false);
-      return toast({
+      toast({
         title: "Internal server error",
         status: "error",
         duration: 5000,
@@ -101,70 +97,75 @@ const Login = () => {
   };
 
   return (
-    <Stack spacing="6">
-      <Stack spacing="5">
-        <FormControl isRequired>
-          <FormLabel htmlFor="email" color="white">
-            Email
-          </FormLabel>
-          <Input
-            background="white"
-            type="email"
-            name="email"
-            value={credentials.email}
-            placeholder="Enter Your Email"
-            onChange={(e) => handleCredentials(e)}
-          />
-        </FormControl>
-      </Stack>
-
-      <Stack spacing="5">
-        <FormControl isRequired>
-          <FormLabel htmlFor="password" color="white">
-            Password
-          </FormLabel>
-          <InputGroup background="white">
-            <InputRightElement w="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
-                {show ? "Hide" : "Show"}
+    <main className="main">
+      <div className="container">
+        <section className="wrapper">
+          <div className="heading">
+            <h1 className="text text-large">Sign In</h1>
+            <p className="text text-normal">
+              New user?{" "}
+              <span>
+                <a href="#" className="text text-links">
+                  Create an account
+                </a>
+              </span>
+            </p>
+          </div>
+          <Stack spacing={4}>
+            <FormControl>
+              <FormLabel htmlFor="email">Email Address</FormLabel>
+              <Input
+              textColor={"black"}
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                value={credentials.email}
+                onChange={handleCredentials}
+                className="input-field"
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel htmlFor="password">Password</FormLabel>
+              <InputGroup size="md">
+                <Input
+                   textColor={"black"}
+                  type={show ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  value={credentials.password}
+                  onChange={handleCredentials}
+                  className="input-field"
+                />
+                <InputRightElement width="4.5rem">
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    onClick={() => setShow(!show)}
+                  >
+                    {show ? "Hide" : "Show"}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+            <Stack direction="row" justify="space-between" align="center">
+              <a href="#" className="text text-links">
+                Forgot Password
+              </a>
+              <Button
+                colorScheme="blue"
+                isLoading={loading}
+                onClick={submitHandler}
+                className="input-submit"
+              >
+                Sign In
               </Button>
-            </InputRightElement>
-            <Input
-              type={show ? "text" : "password"}
-              name="password"
-              value={credentials.password}
-              placeholder="Password"
-              onChange={(e) => handleCredentials(e)}
-            />
-          </InputGroup>
-        </FormControl>
-      </Stack>
-
-      <Button
-        colorScheme="blue"
-        width="100%"
-        style={{ marginTop: 15 }}
-        onClick={submitHandler}
-        isLoading={loading}
-      >
-        Login
-      </Button>
-
-      {/* <Button
-        variant="solid"
-        colorScheme="red"
-        width="100%"
-        onClick={() => {
-          setCredentials({ email: "guest@example.com", password: "12345678" });
-        }}
-      >
-        <i
-          className="fas fa-user-alt"
-          style={{ fontSize: "15px", marginRight: 8 }}
-        />{" "}
-        Get Guest User Credentials
-      </Button> */}
-    </Stack>
+            </Stack>
+          </Stack>
+        </section>
+      </div>
+    </main>
   );
 };
 

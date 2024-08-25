@@ -83,7 +83,7 @@ export default function Blog() {
           </div>
         </div>
       </div>
-      <div className="lightBg" style={{padding: '50px 0'}}>
+      <div className="lightBg" style={{padding: '0px important! 0'}}>
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">What They Say?</h1>

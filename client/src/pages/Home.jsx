@@ -25,35 +25,37 @@ const Home = () => {
   }, [navigate]);
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="5xl">
+     
       <Box
         d="flex"
         justifyContent="center"
         p={3}
-        bg="https://bsmedia.business-standard.com/_media/bs/img/misc/2022-12/08/full/pm-modi-1670510641-43153510.jpg?im=FeatureCrop,size=(1200,900)"
+        bg="https://img.freepik.com/free-vector/dark-blue-abstract-background_1378-176.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724371200&semt=ais_hybrid"
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="none"
       ></Box>
       <Box
-        bg="white"
-        w="70%"
+        URL={"https://img.freepik.com/free-vector/dark-blue-abstract-background_1378-176.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724371200&semt=ais_hybrid"}
+        w="65%"
         margin="auto"
-        background="#7620FF"
+        backgrou=""
+        border=""
         p={4}
         borderRadius="lg"
         borderWidth="1px"
       >
         <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em" margin="1rem">
-            <Tab background="white" padding="10px" margin="6px">
+            <Tab background="#45474B" textColor={"white"} padding="10px" margin="6px">
               Login
             </Tab>
-            <Tab background="white" padding="10px" margin="6px">
+            <Tab background="#45474B" textColor={"white"} padding="10px" margin="6px">
               Sign Up
             </Tab>
-          </TabList>
+      </TabList>
           <TabPanels>
             <TabPanel>
               <Login />
@@ -64,7 +66,9 @@ const Home = () => {
           </TabPanels>
         </Tabs>
       </Box>
+      
     </Container>
+
   );
 };
 

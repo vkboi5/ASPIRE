@@ -189,10 +189,10 @@ import {
       <Stack spacing="6">
   
         <Stack spacing="5">
-          <FormControl isRequired id="name">
-            <FormLabel htmlFor="name" color="white" >Name</FormLabel>
+          <FormControl isRequired id="name" bg={"black"}>
+            <FormLabel htmlFor="name" textColor={"black"}  color="black" >Name</FormLabel>
             <Input
-              background="white"
+              background=""
               type="text"
               name="name"
               value={credentials.name}
@@ -204,9 +204,9 @@ import {
   
         <Stack spacing="5">
           <FormControl isRequired id="email">
-            <FormLabel htmlFor="email" color="white">Email</FormLabel>
+            <FormLabel htmlFor="email" color="black">Email</FormLabel>
             <Input
-            background="white"
+            background="black"
               type="email"
               name="email"
               value={credentials.email}
@@ -218,10 +218,11 @@ import {
 
         <Stack spacing="5">
         <FormControl isRequired id="gstNumber">
-          <FormLabel htmlFor="gstNumber" color="white">GST</FormLabel>
+          <FormLabel htmlFor="gstNumber" color="">GST</FormLabel>
           <Input
-          background="white"
+          background=""
             type="text"
+            textColor={"black"}
             name="gstNumber"
             value={credentials.gstNumber}
             placeholder="Enter Your GST Number"
@@ -232,9 +233,9 @@ import {
 
       <Stack spacing="5">
           <FormControl isRequired id="panNumber">
-            <FormLabel htmlFor="panNumber" color="white">PAN Number</FormLabel>
+            <FormLabel htmlFor="panNumber" color="black">PAN Number</FormLabel>
             <Input
-            background="white"
+            background="black"
               type="text"
               name="panNumber"
               value={credentials.panNumber}
@@ -246,9 +247,9 @@ import {
 
         <Stack spacing="5">
           <FormControl isRequired id="cinNumber">
-            <FormLabel htmlFor="cinNumber" color="white">CIN Number</FormLabel>
+            <FormLabel htmlFor="cinNumber" color="">CIN Number</FormLabel>
             <Input
-            background="white"
+            background="black"
               type="text"
               name="cinNumber"
               value={credentials.cinNumber}
@@ -260,9 +261,9 @@ import {
   
         <Stack spacing="5">
           <FormControl isRequired id="incubator_address">
-            <FormLabel htmlFor="incubator_address" color="white">Address</FormLabel>
+            <FormLabel htmlFor="incubator_address" color="">Address</FormLabel>
             <Input
-            background="white"
+            background="black"
               type="text"
               name="incubator_address"
               value={credentials.incubator_address}
@@ -274,14 +275,15 @@ import {
   
         <Stack spacing="5">
           <FormControl isRequired id="password">
-            <FormLabel htmlFor="password" color="white">Password</FormLabel>
-            <InputGroup background="white">
+            <FormLabel htmlFor="password" color="">Password</FormLabel>
+            <InputGroup background="">
               <InputRightElement w="4.5rem">
                 <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
                   {show ? "Hide" : "Show"}
                 </Button>
               </InputRightElement>
               <Input
+               background="black"
                 type={show ? "text" : "password"}
                 name="password"
                 value={credentials.password}
@@ -294,14 +296,15 @@ import {
   
         <Stack spacing="5">
           <FormControl isRequired id="confirmPassword">
-            <FormLabel htmlFor="confirmPassword" color="white">Confirm Password</FormLabel>
-            <InputGroup background="white">
+            <FormLabel htmlFor="confirmPassword" color="">Confirm Password</FormLabel>
+            <InputGroup background="">
               <InputRightElement w="4.5rem">
                 <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
                   {show ? "Hide" : "Show"}
                 </Button>
               </InputRightElement>
               <Input
+               background="black"
                 type={show ? "text" : "password"}
                 name="confirmPassword"
                 value={credentials.confirmPassword}
@@ -314,9 +317,9 @@ import {
   
         <Stack spacing="5">
           <FormControl id="pic">
-            <FormLabel htmlFor="pic" color="white">Upload your Picture</FormLabel>
+            <FormLabel htmlFor="pic" color="">Upload your Picture</FormLabel>
   
-            <InputGroup background="white">
+            <InputGroup background="">
               <InputLeftElement pointerEvents="none">
                 <i className="fas fa-folder-open" />
               </InputLeftElement>
@@ -326,6 +329,8 @@ import {
                 name="pic"
                 accept="image/*"
                 isInvalid={true}
+               background="black"
+
                 errorBorderColor="#eaafc8"
                 sx={{
                   "::file-selector-button": {

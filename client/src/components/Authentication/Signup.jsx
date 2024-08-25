@@ -307,7 +307,7 @@ const Signup = () => {
   
   return (
     <Stack spacing="6">
-      <Select placeholder='Select role' background="white"
+      <Select className="text-black" placeholder='Select role' background="#F0F0F0" textColor={"black"}
       onChange={(event) => {
         setuserType(event?.target?.value);
       }} >

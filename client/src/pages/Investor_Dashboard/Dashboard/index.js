@@ -80,6 +80,7 @@ export default function Dashboard(props) {
   };
   return (
     <ChakraProvider theme={theme} resetCss={false}>
+      
         <Sidebar
           routes={routes}
           logoText={"AYUSH"}
