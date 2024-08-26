@@ -8,7 +8,7 @@ import Logo from '../../../../assets/logo2.png';
 import BurgerIcon from '../../assets/svg/BurgerIcon';
 import Sidebar from '../Nav/Sidebar';
 import Backdrop from '../Elements/Backdrop';
-
+import AuthApi from '../../../../utils/Api/Auth';
 // Example notifications and user data
 const notifications = [
   {
@@ -53,15 +53,19 @@ const TopNavbar = () => {
     navigate('/register');
   };
 
-  const handleLogout = () => {
-    // Clear token from localStorage
-    localStorage.removeItem('token');
-    // Update isAuthenticated state
-    setIsAuthenticated(false);
-    // Redirect to home or any other desired route after logout
-    navigate('/');
-  };
+  const handleLogout = async () => {
+    try {
+      // Optional: Make a request to invalidate the JWT on the backend
+      await AuthApi.logout(); // Define this in your AuthApi if needed
 
+      // Clear token from localStorage
+      localStorage.removeItem('token');
+      setIsAuthenticated(false);
+      navigate('/'); // Redirect to home or any other desired route after logout
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
   const getSender = (user, users) => {
     return users[0].name === user.name ? users[1].name : users[0].name;
   };
