@@ -1,51 +1,65 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Link } from "react-scroll";
-import { useNavigate } from "react-router-dom";
-import { Menu, MenuButton, MenuList, MenuItem, Text } from "@chakra-ui/react";
-import { BellIcon } from "@chakra-ui/icons";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
+import { Menu, MenuButton, MenuList, MenuItem, Text } from '@chakra-ui/react';
+import { BellIcon } from '@chakra-ui/icons';
+import Logo from '../../../../assets/logo2.png';
+import BurgerIcon from '../../assets/svg/BurgerIcon';
+import Sidebar from '../Nav/Sidebar';
+import Backdrop from '../Elements/Backdrop';
 
-// Components
-import Sidebar from "../Nav/Sidebar";
-import Backdrop from "../Elements/Backdrop";
-
-// Assets
-import Logo from "../../../../assets/logo2.png";
-import BurgerIcon from "../../assets/svg/BurgerIcon";
-
-// Sample data for notifications and user
+// Example notifications and user data
 const notifications = [
   {
-    _id: "1",
+    _id: '1',
     chat: [
       {
         isGroupChat: false,
-        chatName: "Chat Name",
-        users: [{ name: "User" }],
+        chatName: 'Chat Name',
+        users: [{ name: 'User' }],
       },
     ],
   },
 ];
-const user = { name: "Current User" };
+const user = { name: 'Current User' };
 
-export default function TopNavbar() {
+const TopNavbar = () => {
   const [y, setY] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
   const [notification, setNotification] = useState(notifications);
   const [selectedChat, setSelectedChat] = useState(null);
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+
+    // Check authentication on component mount
+    const token = localStorage.getItem('token');
+    setIsAuthenticated(!!token);
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const submitHandler = () => {
-    navigate("/login");
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
+  const handleSignUp = () => {
+    navigate('/register');
+  };
+
+  const handleLogout = () => {
+    // Clear token from localStorage
+    localStorage.removeItem('token');
+    // Update isAuthenticated state
+    setIsAuthenticated(false);
+    // Redirect to home or any other desired route after logout
+    navigate('/');
   };
 
   const getSender = (user, users) => {
@@ -58,7 +72,7 @@ export default function TopNavbar() {
       {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
       <Wrapper
         className="flexCenter animate whiteBg"
-        style={y > 100 ? { height: "60px" } : { height: "80px" }}
+        style={y > 100 ? { height: '60px' } : { height: '80px' }}
       >
         <NavInner className="container flexSpaceCenter">
           <Link className="pointer flexNullCenter" to="home" smooth={true}>
@@ -66,10 +80,10 @@ export default function TopNavbar() {
               src="https://cdn.expresspharma.in/wp-content/uploads/2019/07/23170458/Ministry-of-AYUSH-logo-1-3.jpg"
               width="80"
               height="10"
-              alt=""
+              alt="AYUSH Logo"
             />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <img src={Logo} alt="" width="160" height="160" />
+            <img src={Logo} alt="QDRA Logo" width="160" height="160" />
           </Link>
           <BurderWrapper
             className="pointer"
@@ -81,7 +95,7 @@ export default function TopNavbar() {
             <li className="semiBold font15 pointer">
               <Link
                 activeClass="active"
-                style={{ padding: "10px 15px" }}
+                style={{ padding: '10px 15px' }}
                 to="home"
                 spy={true}
                 smooth={true}
@@ -93,7 +107,7 @@ export default function TopNavbar() {
             <li className="semiBold font15 pointer">
               <Link
                 activeClass="active"
-                style={{ padding: "10px 15px" }}
+                style={{ padding: '10px 15px' }}
                 to="services"
                 spy={true}
                 smooth={true}
@@ -105,7 +119,7 @@ export default function TopNavbar() {
             <li className="semiBold font15 pointer">
               <Link
                 activeClass="active"
-                style={{ padding: "10px 15px" }}
+                style={{ padding: '10px 15px' }}
                 to="eligibility"
                 spy={true}
                 smooth={true}
@@ -117,7 +131,7 @@ export default function TopNavbar() {
             <li className="semiBold font15 pointer">
               <Link
                 activeClass="active"
-                style={{ padding: "10px 15px" }}
+                style={{ padding: '10px 15px' }}
                 to="contact"
                 spy={true}
                 smooth={true}
@@ -137,16 +151,35 @@ export default function TopNavbar() {
             </li>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
-            <li className="semiBold font15 pointer">
-              <button onClick={submitHandler}>Log in</button>
-            </li>
+            {isAuthenticated ? (
+              <li className="semiBold font15 pointer">
+                <button
+                  onClick={handleLogout}
+                  className="h-10 text-[#FFC700] w-24 rounded-lg text-sm font-semibold border-solid"
+                >
+                  Log Out
+                </button>
+              </li>
+            ) : (
+              <>
+                <li className="semiBold font15 pointer">
+                  <button
+                    onClick={handleLogin}
+                    className="h-10 text-[#000] bg-white w-24 rounded-lg text-sm font-semibold border-solid shadow-md"
+                  >
+                    Log In
+                  </button>
+                </li>
+                
+              </>
+            )}
           </UlWrapperRight>
           <Menu>
             <MenuButton p="1" className="notification-badge-container">
               <BellIcon fontSize="2xl" m="1" />
               {notification.length > 0 && (
                 <span className="notification-badge">
-                  {notification.length > 9 ? "9+" : notification.length}
+                  {notification.length > 9 ? '9+' : notification.length}
                 </span>
               )}
             </MenuButton>
@@ -162,10 +195,7 @@ export default function TopNavbar() {
                 >
                   {notif.chat[0].isGroupChat
                     ? `New Message in ${notif.chat[0].chatName}`
-                    : `New Message from ${getSender(
-                        user,
-                        notif.chat[0].users
-                      )}`}
+                    : `New Message from ${getSender(user, notif.chat[0].users)}`}
                 </MenuItem>
               ))}
             </MenuList>
@@ -174,7 +204,7 @@ export default function TopNavbar() {
       </Wrapper>
     </>
   );
-}
+};
 
 const Wrapper = styled.nav`
   width: 100%;
@@ -209,8 +239,10 @@ const UlWrapper = styled.ul`
 `;
 
 const UlWrapperRight = styled.ul`
+  display: flex;
   @media (max-width: 760px) {
     display: none;
   }
 `;
 
+export default TopNavbar;
