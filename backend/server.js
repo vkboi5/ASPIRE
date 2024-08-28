@@ -9,12 +9,15 @@ const { notFound, errorHandler } = require("./middleware");
 
 const app = express(); // Use express js in our app
 app.use(express.json()); // Accept JSON data
+require('dotenv').config();
+
 dotenv.config({ path: path.join(__dirname, "@/env") }); // Specify a custom path if your file containing environment variables is located elsewhere
 connectToMongoDB(); // Connect to Database
 var corsOptions = {
   origin: "*",
   optionsSuccessStatus: 200, // For legacy browser support
 };
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 
 app.use(cors(corsOptions));
 app.use("/api/user", userRoutes);
@@ -38,8 +41,40 @@ if (process.env.NODE_ENV === "production") {
     res.send("API is running");
   });
 }
+app.get('/validate', (req, res) => {
+  const token = req.headers['authorization'];
 
-// --------------------------DEPLOYMENT------------------------------
+  if (!token) return res.status(401).json({ message: 'No token provided' });
+
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err) return res.status(401).json({ message: 'Invalid token' });
+    res.json({ message: 'Token is valid', user: decoded });
+  });
+});
+
+// Route for user logout (client-side action)
+app.post('/logout', (req, res) => {
+  res.json({ message: 'Logged out' });
+});
+
+const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) return res.status(401).send("Access Denied");
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) return res.status(403).send("Invalid token");
+    req.user = decoded;
+    next();
+  });
+};// Logout Route
+
+// Middleware to check if a token is blacklisted
+const isBlacklisted = async (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  const blacklisted = await redisClient.get(token);
+  if (blacklisted) return res.status(403).send("Token is blacklisted");
+  next();
+};
 
 app.use(notFound); // Handle invalid routes
 app.use(errorHandler);

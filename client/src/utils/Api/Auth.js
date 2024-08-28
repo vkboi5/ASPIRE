@@ -29,6 +29,10 @@ const AuthApi = {
 			role
 		});
 	},
+	logout: () => {
+		// Optional: You can include a request to your backend to handle token invalidation
+		return axios.post('/logout'); // Ensure you have this endpoint on your backend
+	}
 };
 
 export default AuthApi;
