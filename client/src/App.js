@@ -29,6 +29,7 @@ import CreateWorkshop from "./pages/CreateWorkshop/CreateWorkshop";
 import AIQueryBox from "./pages/Prompt/AIQueryBox";
 import Posts from "./pages/Posts/Posts";
 import "./pages/YetToBeDone.css";
+import CompleteRegistration from './pages/Investor_Dashboard/CompleteRegistration/index.js';
 
 const App = () => {
   const location = useLocation();
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/investor/dashboard" element={<InvestorDashboard />} />
           <Route path="/investor/profile" element={<InvestorProfile />} />
           <Route path="/investor/posts" element={<InvestorPosts />} />
+          <Route path="/investor/completeregistration" element={<CompleteRegistration />} />
           <Route path="/startup/dashboard" element={<StartupDashboard />} />
           <Route path="/startup/profile" element={<StartupProfile />} />
           <Route path="/startup/pitchdeck" element={<PitchDeckForm />} />

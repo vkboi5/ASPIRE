@@ -103,7 +103,7 @@ function Profile(props) {
                   email={userInfo.email}
                   location={"India"}
                 />
-                {/* <Conversations title={"Conversations"} /> */}
+                <Conversations title={"Conversations"} />
               </Grid>
             </Flex>
           </PanelContainer>
