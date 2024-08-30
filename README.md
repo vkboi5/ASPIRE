@@ -1,11 +1,11 @@
-<p align="center">
+<!-- <p align="center">
   <img src="https://github.com/psankhe28/pre-sih/assets/84843461/a1fb57e6-91cc-4d2e-ac52-837ae1de9487" alt="Ayush" width="200">
+</p> -->
+<p align="center">
+  <b>ASPIRE</b>
 </p>
 <p align="center">
-  <b>Startup - Ayush Portal</b>
-</p>
-<p align="center">
-  <b>Team Bharat</b>
+  <b>Team Genesis</b>
   <b>Pre SIH 2023</b>
 </p>
 <hr>
@@ -63,13 +63,6 @@ Ayush Portal is on a mission to transform the entrepreneurial landscape in India
 
 ## Figma
 https://www.figma.com/design/mKsvTmddyMeRvnxvjhVpB7/AYUSH?node-id=0-1&t=GGjsCOyYIXbAp50p-1
-
-
-## 🔗Assets
-
-- [GitHub Repo](https://github.com/psankhe28/Ayush-Portal)
-- [PPT](https://docs.google.com/presentation/d/1ib232jbuImGwqXSBhfGoWsikDvwsRh8K/edit?usp=drive_link&ouid=115976062447813507414&rtpof=true&sd=true)
-- [Proposal](https://docs.google.com/document/d/1ItpnH9VlwRiv5IV1TeXOfMcfWitmsh56KJ3saOD53as/edit?usp=sharing)
 
 ## 🤖Tech-Stack
 
