@@ -71,7 +71,7 @@ import {
             </Button>
           </Stack>
   
-          {/* Alert Message */}
+          
           {showAlert && (
             <Fade in={showAlert}>
               <Alert status="success" variant="subtle" mt={4}>
@@ -81,7 +81,7 @@ import {
             </Fade>
           )}
   
-          {/* Terms of Use Section */}
+       
           <Box
             mt={8}
             p={6}
@@ -99,28 +99,28 @@ import {
                 the following terms and conditions:
               </p>
               <p>
-                1. **Eligibility**: You must be at least 18 years old to use this
+                1. Eligibility: You must be at least 18 years old to use this
                 portal.
               </p>
               <p>
-                2. **User Responsibilities**: You agree to provide accurate
+                2. User Responsibilities: You agree to provide accurate
                 information and to use the portal in a lawful manner.
               </p>
               <p>
-                3. **Data Privacy**: Your data will be handled in accordance with
+                3. Data Privacy: Your data will be handled in accordance with
                 our privacy policy.
               </p>
               <p>
-                4. **Intellectual Property**: All content on the portal is owned
+                4. Intellectual Property: All content on the portal is owned
                 by us or our licensors. You may not reproduce or distribute it
                 without permission.
               </p>
               <p>
-                5. **Limitation of Liability**: We are not liable for any
+                5. Limitation of Liability: We are not liable for any
                 damages arising from your use of the portal.
               </p>
               <p>
-                6. **Changes**: We may update these terms from time to time, and
+                6. Changes: We may update these terms from time to time, and
                 you are responsible for reviewing them periodically.
               </p>
               <p>
