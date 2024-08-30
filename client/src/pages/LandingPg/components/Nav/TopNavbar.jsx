@@ -155,16 +155,7 @@ const TopNavbar = () => {
             </li>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
-            {isAuthenticated ? (
-              <li className="semiBold font15 pointer">
-                <button
-                  onClick={handleLogout}
-                  className="h-10 text-[#FFC700] w-24 rounded-lg text-sm font-semibold border-solid"
-                >
-                  Log Out
-                </button>
-              </li>
-            ) : (
+            
               <>
                 <li className="semiBold font15 pointer">
                   <button
@@ -176,7 +167,7 @@ const TopNavbar = () => {
                 </li>
                 
               </>
-            )}
+            
           </UlWrapperRight>
           <Menu>
             <MenuButton p="1" className="notification-badge-container">

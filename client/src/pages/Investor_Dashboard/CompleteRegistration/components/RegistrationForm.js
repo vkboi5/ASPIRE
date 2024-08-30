@@ -6,6 +6,9 @@ const RegistrationForm = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    mobile: '',
+    website: '',
+    mobileAppLink: '',
     agreeToTerms: false,
   });
 
@@ -36,7 +39,7 @@ const RegistrationForm = () => {
           required
         />
       </div>
-      
+
       <div>
         <label htmlFor="email">Email:</label>
         <input
@@ -70,6 +73,40 @@ const RegistrationForm = () => {
           value={formData.confirmPassword}
           onChange={handleChange}
           required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="mobile">Mobile:</label>
+        <input
+          type="tel"
+          id="mobile"
+          name="mobile"
+          value={formData.mobile}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="website">Website:</label>
+        <input
+          type="url"
+          id="website"
+          name="website"
+          value={formData.website}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="mobileAppLink">Mobile App Link:</label>
+        <input
+          type="url"
+          id="mobileAppLink"
+          name="mobileAppLink"
+          value={formData.mobileAppLink}
+          onChange={handleChange}
         />
       </div>
 
