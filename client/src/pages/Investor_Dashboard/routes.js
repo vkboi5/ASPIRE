@@ -2,9 +2,9 @@
 import Dashboard from "./Dashboard";
 import Profile from "./Profile";
 import Post from './Posts/Posts'
-import CompleteRegistration from './CompleteRegistration'
 
 import { HomeIcon, StatsIcon, PersonIcon } from "./components/Icons/Icons";
+import StartupRegistration from "../Startup_Dashboard/CompleteRegistration";
 
 var dashRoutes = [
   {
@@ -25,7 +25,7 @@ var dashRoutes = [
     name: "Complete Registration",
     icon: <PersonIcon color="inherit" />,
     secondaryNavbar: true,
-    component: CompleteRegistration,
+    component: StartupRegistration,
   },
   {
     path: "/investor/posts",

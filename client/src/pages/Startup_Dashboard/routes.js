@@ -4,13 +4,13 @@ import Tables from "./Tables";
 import Profile from "./Profile";
 import Schemes from "./GovernmentSchemes/GovernmentSchemes";
 import PitchDeckForm from "./PitchDeck/PitchDeckForm";
-
 import { HomeIcon, StatsIcon, PersonIcon } from "./components/Icons/Icons";
 import FindInvestor from "./FindInvestors/FindInvestors";
 import Workshop from "./Workshops/exploreWorkshops";
 import MentorData from "./Mentor/Mentor";
 import Post from './CreatePost/Post'
 import info from "./Info/Info";
+import StartupRegistration from "./CompleteRegistration";
 
 var startupRoutes = [
   {
@@ -41,6 +41,13 @@ var startupRoutes = [
     component: Schemes,
   },
   {
+    path: "/startup/startupregistration",
+    name: "Complete Registration",
+    icon: <PersonIcon color="inherit" />,
+    secondaryNavbar: true,
+    component: StartupRegistration,
+  },
+  {
     path: "/startup/pitchdeck",
     name: "Pitch Deck",
     icon: <PersonIcon color="inherit" />,
@@ -61,6 +68,13 @@ var startupRoutes = [
     secondaryNavbar: true,
     component: Post,
   },
+  // {
+  //   path: "/startup/startupTrack",
+  //   name: "Track Startup",
+  //   icon: <PersonIcon color="inherit" />,
+  //   secondaryNavbar: true,
+  //   component: startupT,
+  // },
   {
     path: "/startup/find-investor",
     name: "Find Investor",
