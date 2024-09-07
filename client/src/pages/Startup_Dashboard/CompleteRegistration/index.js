@@ -101,7 +101,7 @@ function StartupRegistration(props) {
       setCurrentStep(4);
     } else if (currentStep === 4) {
       try {
-        const response = await axios.post("http://localhost:5000/api/register", {
+        const response = await axios.post("https://aspirebackend-gywyy55s.b4a.run//api/register", {
           ...formData,
         });
         console.log("Registration successful:", response.data);

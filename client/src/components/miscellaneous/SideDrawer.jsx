@@ -74,7 +74,7 @@ const SideDrawer = () => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:5000/api/user?search=${search}`, {
+      const response = await fetch(`https://aspirebackend-gywyy55s.b4a.run//api/user?search=${search}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -102,7 +102,7 @@ const SideDrawer = () => {
     try {
       setLoadingChat(true);
 
-      const response = await fetch(`http://localhost:5000/api/chat`, {
+      const response = await fetch(`https://aspirebackend-gywyy55s.b4a.run//api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

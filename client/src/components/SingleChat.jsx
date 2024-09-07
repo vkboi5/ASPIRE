@@ -17,7 +17,7 @@ import ProfileModal from "./miscellaneous/ProfileModal";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import ScrollableChat from "./ScrollableChat";
 
-const ENDPOINT = "http://localhost:5000"; // If you are deploying the app, replace the value with "https://YOUR_DEPLOYED_APPLICATION_URL" then run "npm run build" to create a production build
+const ENDPOINT = "https://aspirebackend-gywyy55s.b4a.run/"; // If you are deploying the app, replace the value with "https://YOUR_DEPLOYED_APPLICATION_URL" then run "npm run build" to create a production build
 let socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -41,7 +41,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:5000/api/message/${selectedChat._id}`, {
+      const response = await fetch(`https://aspirebackend-gywyy55s.b4a.run//api/message/${selectedChat._id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -108,7 +108,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       try {
         setNewMessage(""); // Clear message field before making API call (won't affect API call as the function is asynchronous)
 
-        const response = await fetch("http://localhost:5000/api/message", {
+        const response = await fetch("https://aspirebackend-gywyy55s.b4a.run//api/message", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${user.token}`,

@@ -31,7 +31,7 @@ function Profile(props) {
   useEffect(() => {
     const generateAIImage = async () => {
       try {
-        const response = await axios.post("http://localhost:5000/api/image", {
+        const response = await axios.post("https://aspirebackend-gywyy55s.b4a.run//api/image", {
           prompt: `a investor named ${userInfo.name}`,
           size: "1024x1024",
         });

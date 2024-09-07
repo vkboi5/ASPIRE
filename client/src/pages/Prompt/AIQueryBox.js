@@ -23,7 +23,7 @@ const AIQueryBox = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/api/ai", {
+      const response = await axios.post("https://aspirebackend-gywyy55s.b4a.run//api/ai", {
         question: inputText,
       });
 
