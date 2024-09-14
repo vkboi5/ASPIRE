@@ -10,12 +10,13 @@ const {
 const { sendMessage, allMessages } = require("./messageControllers");
 const { promptMessage } = require("./promptControllers");
 const { generateImage } = require("./imageControllers");
-
+const { registerStartup,getStartupByStartupName } = require("./startupController");
 module.exports = {
   registerUser,
   authUser,
   allUsers,
-
+  registerStartup,
+  getStartupByStartupName,
   accessChat,
   fetchChats,
   createGroupChat,

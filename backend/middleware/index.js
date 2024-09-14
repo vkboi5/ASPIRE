@@ -1,5 +1,5 @@
 const { notFound, errorHandler } = require("./errorMiddleware");
 const protect = require("./authMiddleware")
 const verifyGST=require("./gstMiddleware")
-
-module.exports = { notFound, errorHandler, protect,verifyGST };
+const verifyPAN=require("./panMiddleware")
+module.exports = { notFound, errorHandler, protect,verifyGST,verifyPAN };

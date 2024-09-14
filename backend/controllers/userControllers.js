@@ -4,7 +4,7 @@ const {
   generateHashedPassword,
   verifyPassword,
 } = require("../config");
-const { verifyGST } = require("../middleware");
+const { verifyGST,verifyPAN } = require("../middleware");
 
 const registerUser = async (req, res) => {
   const {
@@ -45,7 +45,7 @@ const registerUser = async (req, res) => {
   // Verify GST number if not empty
   if (gstNumber !== "") {
     const gstVerificationResult = await verifyGST(gstNumber);
-
+    console.log(gstVerificationResult);
     if (gstVerificationResult.error) {
       // Handle GST verification error
       return res.status(400).json({
@@ -55,19 +55,47 @@ const registerUser = async (req, res) => {
       });
     }
 
-    // Check PAN number and name
-    if (
-      gstVerificationResult.taxpayerInfo.panNo !== panNumber ||
-      gstVerificationResult.taxpayerInfo.lgnm !== name
-    ) {
+    // Check PAN number and name with GST details 
+  //   if (
+  //     gstVerificationResult.taxpayerInfo.panNo !== panNumber ||
+  //     gstVerificationResult.taxpayerInfo.lgnm !== name
+  //   ) {
+  //     return res.status(400).json({
+  //       success: false,
+  //       statusCode: 400,
+  //       message: "PAN number or name does not match GST details",
+  //     });
+  //   }
+  // }
+
+
+      // Verify PAN number credentials
+  if (panNumber !== "") {
+    const panVerificationResult = await verifyPAN(panNumber,name);
+
+    if (panVerificationResult.error) {
+      // Handle PAN verification error
       return res.status(400).json({
         success: false,
         statusCode: 400,
-        message: "PAN number or name does not match GST details",
+        message: panVerificationResult.message,
       });
     }
-  }
 
+    const startup_owner = panVerificationResult.data.data.name_information.pan_name_cleaned;
+    console.log(startup_owner);
+
+    // Check PAN name
+    if (startup_owner !== name) {
+      return res.status(400).json({
+        success: false,
+        statusCode: 400,
+        message: "PAN details are incorrect",
+        });
+      }
+    }
+  };
+  
   // Register and store the new user
   const userCreated = await User.create(
     // If there is no picture present, remove 'pic'

@@ -2,20 +2,20 @@ const axios = require('axios');
 
 async function verifyGST(gstNo) {
     try {
-      const apiUrl = `https://appyflow.in/api/verifyGST?key_secret=${process.env.GST_SECRET}&gstNo=${gstNo}`;
+      const apiKey = process.env.GST_SECRET;
+      const apiUrl = `http://sheet.gstincheck.co.in/check/${apiKey}/${gstNo}`;
       const response = await axios.get(apiUrl);
       const data = response.data;
-  
-      if (data.error) {
-        return { error: true, message: data.message };
+
+      if (data.flag === false) {
+        return { error: true, message: data.message, errorCode: data.errorCode };
       } else {
-        return data;
+        return { error: false, data: data.data };
       }
     } catch (error) {
       return { error: true, message: error.message };
     }
   }
 
-  module.exports =verifyGST;
+  module.exports = verifyGST;
 
-  
