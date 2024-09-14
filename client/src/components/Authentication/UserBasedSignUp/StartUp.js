@@ -133,7 +133,7 @@ const StartUp = () => {
 
     // Now submit the data
     try {
-      const response = await fetch("https://aspirebackend-gywyy55s.b4a.run//api/user", {
+      const response = await fetch("https://aspirebackend-gywyy55s.b4a.run/api/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -189,7 +189,7 @@ const StartUp = () => {
     <Stack spacing="6">
       <Stack spacing="5">
         <FormControl isRequired id="name">
-          <FormLabel htmlFor="name" color="white">
+          <FormLabel htmlFor="name" color="black">
             Name
           </FormLabel>
           <Input
@@ -205,7 +205,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="email">
-          <FormLabel htmlFor="email" color="white">
+          <FormLabel htmlFor="email" color="black">
             Email
           </FormLabel>
           <Input
@@ -221,7 +221,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="gstNumber">
-          <FormLabel htmlFor="gstNumber" color="white">
+          <FormLabel htmlFor="gstNumber" color="black">
             GST Number
           </FormLabel>
           <Input
@@ -237,7 +237,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="panNumber">
-          <FormLabel htmlFor="panNumber" color="white">
+          <FormLabel htmlFor="panNumber" color="black">
             PAN Number
           </FormLabel>
           <Input
@@ -253,7 +253,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl id="cinNumber">
-          <FormLabel htmlFor="cinNumber" color="white">
+          <FormLabel htmlFor="cinNumber" color="black">
             CIN Number
           </FormLabel>
           <Input
@@ -269,7 +269,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="startup_domain">
-          <FormLabel htmlFor="startup_domain" color="white">
+          <FormLabel htmlFor="startup_domain" color="black">
             Domain
           </FormLabel>
           <Input
@@ -285,7 +285,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="startup_owner">
-          <FormLabel htmlFor="startup_owner" color="white">
+          <FormLabel htmlFor="startup_owner" color="black">
             Owner Name
           </FormLabel>
           <Input
@@ -301,7 +301,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="password">
-          <FormLabel htmlFor="password" color="white">
+          <FormLabel htmlFor="password" color="black">
             Password
           </FormLabel>
           <InputGroup background="white">
@@ -323,7 +323,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="confirmPassword">
-          <FormLabel htmlFor="confirmPassword" color="white">
+          <FormLabel htmlFor="confirmPassword" color="black">
             Confirm Password
           </FormLabel>
           <InputGroup background="white">
@@ -345,7 +345,7 @@ const StartUp = () => {
 
       <Stack spacing="5">
         <FormControl id="pic">
-          <FormLabel htmlFor="pic" color="white">
+          <FormLabel htmlFor="pic" color="black">
             Upload your Logo
           </FormLabel>
 

@@ -189,7 +189,7 @@ import {
       <Stack spacing="6">
   
         <Stack spacing="5">
-          <FormControl isRequired id="name" bg={"black"}>
+          <FormControl isRequired id="name" bg={"white"}>
             <FormLabel htmlFor="name" textColor={"black"}  color="black" >Name</FormLabel>
             <Input
               background=""
@@ -206,7 +206,7 @@ import {
           <FormControl isRequired id="email">
             <FormLabel htmlFor="email" color="black">Email</FormLabel>
             <Input
-            background="black"
+            background="white"
               type="email"
               name="email"
               value={credentials.email}
@@ -235,7 +235,7 @@ import {
           <FormControl isRequired id="panNumber">
             <FormLabel htmlFor="panNumber" color="black">PAN Number</FormLabel>
             <Input
-            background="black"
+            background="white"
               type="text"
               name="panNumber"
               value={credentials.panNumber}
@@ -249,7 +249,7 @@ import {
           <FormControl isRequired id="cinNumber">
             <FormLabel htmlFor="cinNumber" color="">CIN Number</FormLabel>
             <Input
-            background="black"
+            background="white"
               type="text"
               name="cinNumber"
               value={credentials.cinNumber}
@@ -263,7 +263,7 @@ import {
           <FormControl isRequired id="incubator_address">
             <FormLabel htmlFor="incubator_address" color="">Address</FormLabel>
             <Input
-            background="black"
+            background="white"
               type="text"
               name="incubator_address"
               value={credentials.incubator_address}
@@ -283,7 +283,7 @@ import {
                 </Button>
               </InputRightElement>
               <Input
-               background="black"
+               background="white"
                 type={show ? "text" : "password"}
                 name="password"
                 value={credentials.password}
@@ -304,7 +304,7 @@ import {
                 </Button>
               </InputRightElement>
               <Input
-               background="black"
+               background="white"
                 type={show ? "text" : "password"}
                 name="confirmPassword"
                 value={credentials.confirmPassword}
@@ -329,7 +329,7 @@ import {
                 name="pic"
                 accept="image/*"
                 isInvalid={true}
-               background="black"
+               background="white"
 
                 errorBorderColor="#eaafc8"
                 sx={{

@@ -189,7 +189,7 @@ const Investor = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="name">
-          <FormLabel htmlFor="name" color="white">Name</FormLabel>
+          <FormLabel htmlFor="name" color="black">Name</FormLabel>
           <Input
           background="white"
             type="text"
@@ -203,7 +203,7 @@ const Investor = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="email">
-          <FormLabel htmlFor="email" color="white">Email</FormLabel>
+          <FormLabel htmlFor="email" color="black">Email</FormLabel>
           <Input
            background="white"
             type="email"
@@ -217,7 +217,7 @@ const Investor = () => {
 
       <Stack spacing="5">
           <FormControl isRequired id="panNumber">
-            <FormLabel htmlFor="panNumber" color="white">PAN Number</FormLabel>
+            <FormLabel htmlFor="panNumber" color="black">PAN Number</FormLabel>
             <Input
              background="white"
               type="text"
@@ -231,7 +231,7 @@ const Investor = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="password">
-          <FormLabel htmlFor="password" color="white">Password</FormLabel>
+          <FormLabel htmlFor="password" color="black">Password</FormLabel>
           <InputGroup  background="white">
             <InputRightElement w="4.5rem">
               <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
@@ -251,7 +251,7 @@ const Investor = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="confirmPassword">
-          <FormLabel htmlFor="confirmPassword" color="white">Confirm Password</FormLabel>
+          <FormLabel htmlFor="confirmPassword" color="black">Confirm Password</FormLabel>
           <InputGroup  background="white">
             <InputRightElement w="4.5rem">
               <Button h="1.75rem" size="sm" onClick={() => setShow(!show)}>
@@ -271,7 +271,7 @@ const Investor = () => {
 
       <Stack spacing="5">
         <FormControl id="pic">
-          <FormLabel htmlFor="pic" color="white">Upload your Picture</FormLabel>
+          <FormLabel htmlFor="pic" color="black">Upload your Picture</FormLabel>
 
           <InputGroup  background="white">
             <InputLeftElement pointerEvents="none">

@@ -10,30 +10,10 @@ import {
   Checkbox,
 } from "@chakra-ui/react";
 
-const Startup = ({ formData, handleChange, handleSubmit, handleLogoChange }) => {
+const AboutStartup = ({ formData, handleChange, handleSubmit }) => {
   return (
     <Box>
       <Stack spacing={4}>
-        <FormControl id="logo" isRequired>
-          <FormLabel>Company Logo</FormLabel>
-          <Input
-            type="file"
-            accept="image/*"
-            name="logo"
-            onChange={handleLogoChange}
-          />
-        </FormControl>
-
-        <FormControl id="isCompanyLogo" isRequired>
-          <Checkbox
-            name="isCompanyLogo"
-            isChecked={formData.isCompanyLogo}
-            onChange={handleChange}
-          >
-            This is my company/institution logo
-          </Checkbox>
-        </FormControl>
-
         <FormControl id="startupName" isRequired>
           <FormLabel>Startup Name</FormLabel>
           <Input
@@ -83,4 +63,4 @@ const Startup = ({ formData, handleChange, handleSubmit, handleLogoChange }) => 
   );
 };
 
-export default Startup;
+export default AboutStartup;

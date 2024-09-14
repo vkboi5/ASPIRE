@@ -11,6 +11,7 @@ import MentorData from "./Mentor/Mentor";
 import Post from './CreatePost/Post'
 import info from "./Info/Info";
 import StartupRegistration from "./CompleteRegistration";
+import ViewRegistration from "./ViewRegistration/ViewRegistration";
 
 var startupRoutes = [
   {
@@ -55,6 +56,13 @@ var startupRoutes = [
     component: PitchDeckForm,
   },
   {
+    path: "/startup/viewregistration",
+    name: "View Registration",
+    icon: <PersonIcon color="inherit" />,
+    secondaryNavbar: true,
+    component: ViewRegistration,
+  },
+  {
     path: "/startup/create-posts",
     name: "Posts",
     icon: <PersonIcon color="inherit" />,
@@ -68,13 +76,6 @@ var startupRoutes = [
     secondaryNavbar: true,
     component: Post,
   },
-  // {
-  //   path: "/startup/startupTrack",
-  //   name: "Track Startup",
-  //   icon: <PersonIcon color="inherit" />,
-  //   secondaryNavbar: true,
-  //   component: startupT,
-  // },
   {
     path: "/startup/find-investor",
     name: "Find Investor",
@@ -95,20 +96,7 @@ var startupRoutes = [
     icon: <PersonIcon color="inherit" />,
     secondaryNavbar: true,
     component: Workshop,
-  },
-  {
-    path: "/startup/news",
-    name: "News",
-    icon: <PersonIcon color="inherit" />,
-    secondaryNavbar: true,
-    component: Profile,
-  },
-  {
-    path: "/startup/news",
-    name: "News",
-    icon: <PersonIcon color="inherit" />,
-    secondaryNavbar: true,
-    component: Profile,
-  },
+  }
 ];
+
 export default startupRoutes;

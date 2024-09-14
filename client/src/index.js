@@ -13,6 +13,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./utils/theme/theme";
 import ChatProvider from "./context/ChatProvider";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   

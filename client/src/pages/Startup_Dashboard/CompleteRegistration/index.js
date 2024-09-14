@@ -21,9 +21,11 @@ import PanelContent from "../components/Layout/PanelContent";
 import routes from "../routes.js";
 import theme from "../../../utils/theme/theme";
 import { ChakraProvider } from "@chakra-ui/react";
-import ContactInfo from "./components/AboutStartup.js";
 import Category from './components/Category.js';
 import Interest from './components/Interest.js';  // Import Interest component
+import AboutStartup from './components/AboutStartup.js';
+import { useNavigate } from "react-router-dom";
+
 
 const statesAndCities = {
   "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Nellore"],
@@ -64,16 +66,16 @@ const statesAndCities = {
 
 function StartupRegistration(props) {
   const { ...rest } = props;
+  const history = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    mobile: "",
-    website: "",
-    mobileAppLink: "",
-    state: "",
-    city: "",
+    startupName: "",
+    fundingStatus: "",
+    description: "",
+    industry: "",
+    sector: "",
+    services: "",
+    udyogAadhaar: "",
+    natureOfEntity: "",
     interest: "",
   });
 
@@ -90,22 +92,17 @@ function StartupRegistration(props) {
     e.preventDefault();
 
     if (currentStep === 1) {
-      if (formData.password !== formData.confirmPassword) {
-        alert("Passwords do not match!");
-        return;
-      }
       setCurrentStep(2);
     } else if (currentStep === 2) {
       setCurrentStep(3);
     } else if (currentStep === 3) {
-      setCurrentStep(4);
-    } else if (currentStep === 4) {
       try {
-        const response = await axios.post("https://aspirebackend-gywyy55s.b4a.run//api/register", {
+        const response = await axios.post("https://aspirebackend-gywyy55s.b4a.run/api/startup", {
           ...formData,
         });
         console.log("Registration successful:", response.data);
         alert("Registration successful!");
+        history.push("/startup/viewregistration");
       } catch (error) {
         console.error("Error during registration:", error);
         alert("Registration failed. Please try again.");
@@ -113,7 +110,9 @@ function StartupRegistration(props) {
     }
   };
 
-  const cities = formData.state ? statesAndCities[formData.state] : [];
+  const handleBack = () => {
+    setCurrentStep(currentStep - 1);
+  };
 
   return (
     <ChakraProvider theme={theme}>
@@ -147,7 +146,7 @@ function StartupRegistration(props) {
                 </Stack>
                 <Box width="full">
                   <Stack direction="row" spacing={4} justify="center">
-                    {["Contact Info", "About Startup", "Category", "Your Interest"].map((step, index) => (
+                    {["About Startup", "Category", "Your Interest"].map((step, index) => (
                       <Box
                         key={index}
                         flex="1"
@@ -168,99 +167,33 @@ function StartupRegistration(props) {
                   p={8}
                 >
                   {currentStep === 1 ? (
-                    <Stack spacing={4}>
-                      <FormControl id="name" isRequired>
-                        <FormLabel>Name</FormLabel>
-                        <Input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                        />
-                      </FormControl>
-                      <FormControl id="email" isRequired>
-                        <FormLabel>Email</FormLabel>
-                        <Input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                        />
-                      </FormControl>
-                      <FormControl id="password" isRequired>
-                        <FormLabel>Password</FormLabel>
-                        <Input
-                          type="password"
-                          name="password"
-                          value={formData.password}
-                          onChange={handleChange}
-                        />
-                      </FormControl>
-                      <FormControl id="confirmPassword" isRequired>
-                        <FormLabel>Confirm Password</FormLabel>
-                        <Input
-                          type="password"
-                          name="confirmPassword"
-                          value={formData.confirmPassword}
-                          onChange={handleChange}
-                        />
-                      </FormControl>
-                      <FormControl id="state" isRequired>
-                        <FormLabel>State</FormLabel>
-                        <Select
-                          placeholder="Select state"
-                          name="state"
-                          value={formData.state}
-                          onChange={handleChange}
-                        >
-                          {Object.keys(statesAndCities).map((state) => (
-                            <option key={state} value={state}>
-                              {state}
-                            </option>
-                          ))}
-                        </Select>
-                      </FormControl>
-                      <FormControl id="city" isRequired>
-                        <FormLabel>City</FormLabel>
-                        <Select
-                          placeholder="Select city"
-                          name="city"
-                          value={formData.city}
-                          onChange={handleChange}
-                        >
-                          {cities.map((city) => (
-                            <option key={city} value={city}>
-                              {city}
-                            </option>
-                          ))}
-                        </Select>
-                      </FormControl>
-                      <Button
-                        mt={4}
-                        colorScheme="teal"
-                        onClick={handleSubmit}
-                      >
-                        Next
-                      </Button>
-                    </Stack>
+                    <AboutStartup
+                      handleChange={handleChange}
+                      formData={formData}
+                      handleSubmit={handleSubmit}
+                    />
                   ) : currentStep === 2 ? (
-                    <ContactInfo
-                      handleChange={handleChange}
-                      formData={formData}
-                      handleSubmit={handleSubmit}
-                    />
+                    <>
+                      <Category
+                        handleChange={handleChange}
+                        formData={formData}
+                        handleSubmit={handleSubmit}
+                      />
+                      <Button mt={4} colorScheme="teal" onClick={handleBack}>
+                        Back
+                      </Button>
+                    </>
                   ) : currentStep === 3 ? (
-                    <Category
-                      handleChange={handleChange}
-                      formData={formData}
-                      handleSubmit={handleSubmit}
-                    />
-                  ) : currentStep === 4 ? (
-                    <Interest
-                      handleChange={handleChange}
-                      formData={formData}
-                      handleSubmit={handleSubmit}
-                    />
+                    <>
+                      <Interest
+                        handleChange={handleChange}
+                        formData={formData}
+                        handleSubmit={handleSubmit}
+                      />
+                      <Button mt={4} colorScheme="teal" onClick={handleBack}>
+                        Back
+                      </Button>
+                    </>
                   ) : null}
                 </Box>
               </Stack>

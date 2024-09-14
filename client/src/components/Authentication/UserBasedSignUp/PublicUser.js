@@ -189,7 +189,7 @@ const PublicUser = () => {
     <Stack spacing="6">
       <Stack spacing="5">
         <FormControl isRequired id="name">
-          <FormLabel htmlFor="name" color="white">
+          <FormLabel htmlFor="name" color="black">
             Name
           </FormLabel>
           <Input
@@ -205,7 +205,7 @@ const PublicUser = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="email">
-          <FormLabel htmlFor="email" color="white">
+          <FormLabel htmlFor="email" color="black">
             Email
           </FormLabel>
           <Input
@@ -221,7 +221,7 @@ const PublicUser = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="password">
-          <FormLabel htmlFor="password" color="white">
+          <FormLabel htmlFor="password" color="black">
             Password
           </FormLabel>
           <InputGroup background="white">
@@ -243,7 +243,7 @@ const PublicUser = () => {
 
       <Stack spacing="5">
         <FormControl isRequired id="confirmPassword">
-          <FormLabel htmlFor="confirmPassword" color="white">
+          <FormLabel htmlFor="confirmPassword" color="black">
             Confirm Password
           </FormLabel>
           <InputGroup background="white">
@@ -265,7 +265,7 @@ const PublicUser = () => {
 
       <Stack spacing="5">
         <FormControl id="pic">
-          <FormLabel htmlFor="pic" color="white">
+          <FormLabel htmlFor="pic" color="black">
             Upload your Profile Picture
           </FormLabel>
 
