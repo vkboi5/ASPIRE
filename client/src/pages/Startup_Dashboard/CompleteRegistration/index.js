@@ -11,8 +11,9 @@ import {
   Heading,
   Divider,
   Text,
+  ChakraProvider,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import MainPanel from "../components/Layout/MainPanel";
@@ -20,12 +21,12 @@ import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
 import routes from "../routes.js";
 import theme from "../../../utils/theme/theme";
-import { ChakraProvider } from "@chakra-ui/react";
 import Category from './components/Category.js';
-import Interest from './components/Interest.js';  // Import Interest component
+import Interest from './components/Interest.js';
 import AboutStartup from './components/AboutStartup.js';
 import { useNavigate } from "react-router-dom";
-
+import DAP from './components/DAP';
+import { useReactToPrint } from 'react-to-print';
 
 const statesAndCities = {
   "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Nellore"],
@@ -66,7 +67,7 @@ const statesAndCities = {
 
 function StartupRegistration(props) {
   const { ...rest } = props;
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     startupName: "",
     fundingStatus: "",
@@ -80,6 +81,45 @@ function StartupRegistration(props) {
   });
 
   const [currentStep, setCurrentStep] = useState(1);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [dapData, setDapData] = useState({
+    profilePicture: 'https://via.placeholder.com/100',
+    name: 'John Doe',
+    dapId: 'DAP123456789',
+    qrCodeLink: 'https://example.com',
+    category: 'Startup',
+    specialization: 'Ayurveda',
+    contactDetails: 'john.doe@example.com, +1234567890',
+    location: 'City, State, Country',
+    foundingDate: '01-01-2020',
+    registrationNumber: 'REG123456',
+    certifications: 'Certification 1, Certification 2',
+    complianceStatus: 'Compliant',
+    productServiceListings: 'Product 1, Service 1',
+    certificationDetails: 'Certification Detail 1, Certification Detail 2',
+    licenseNumbers: 'License 1, License 2',
+    awards: 'Award 1, Award 2',
+    milestones: 'Milestone 1, Milestone 2',
+    previousInvestments: 'Investment 1, Investment 2',
+    legalStatus: 'Legal',
+    pastViolations: 'None',
+    certificationExpiryDates: '01-01-2023',
+    partneredStartups: 'Startup 1, Startup 2',
+    collaborations: 'Collaboration 1, Collaboration 2',
+    followerCount: '1000',
+    coinBalance: '100',
+    redeemableVouchers: 'Voucher 1, Voucher 2',
+    transactionHistory: 'Transaction 1, Transaction 2',
+    digitalSignature: 'Signature',
+    expiryDate: '01-01-2025',
+    dynamicUpdateLink: 'https://example.com/update'
+  });
+
+  const dapRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => dapRef.current,
+  });
 
   const handleChange = (e) => {
     setFormData({
@@ -102,7 +142,21 @@ function StartupRegistration(props) {
         });
         console.log("Registration successful:", response.data);
         alert("Registration successful!");
-        history.push("/startup/viewregistration");
+
+        const dapData = {
+          profilePicture: 'https://via.placeholder.com/100',
+          name: formData.startupName,
+          dapId: 'DAP123456789',
+          qrCodeLink: 'https://example.com',
+          category: formData.industry,
+          specialization: formData.sector,
+          contactDetails: formData.services,
+          location: formData.udyogAadhaar,
+          complianceStatus: formData.natureOfEntity,
+          interest: formData.interest,
+        };
+
+        navigate("/startup/dap", { state: { dapData } });
       } catch (error) {
         console.error("Error during registration:", error);
         alert("Registration failed. Please try again.");
@@ -110,8 +164,17 @@ function StartupRegistration(props) {
     }
   };
 
+
   const handleBack = () => {
     setCurrentStep(currentStep - 1);
+  };
+
+  const handleUploadPicture = (e) => {
+    const file = e.target.files[0];
+    setFormData({
+      ...formData,
+      logo: file,
+    });
   };
 
   return (
@@ -171,6 +234,7 @@ function StartupRegistration(props) {
                       handleChange={handleChange}
                       formData={formData}
                       handleSubmit={handleSubmit}
+                      handleUploadPicture={handleUploadPicture}
                     />
                   ) : currentStep === 2 ? (
                     <>
@@ -201,6 +265,12 @@ function StartupRegistration(props) {
           </PanelContainer>
         </PanelContent>
       </MainPanel>
+      {isRegistered && (
+        <>
+          <DAP data={dapData} ref={dapRef} />
+          <Button onClick={handlePrint} mt={4}>Download DAP as PDF</Button>
+        </>
+      )}
     </ChakraProvider>
   );
 }

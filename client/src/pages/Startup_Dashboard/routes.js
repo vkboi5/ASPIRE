@@ -12,7 +12,7 @@ import Post from './CreatePost/Post'
 import info from "./Info/Info";
 import StartupRegistration from "./CompleteRegistration";
 import ViewRegistration from "./ViewRegistration/ViewRegistration";
-
+import DAPPage from "./CompleteRegistration/components/dap_page";
 var startupRoutes = [
   {
     path: "/startup/dashboard",
@@ -96,6 +96,13 @@ var startupRoutes = [
     icon: <PersonIcon color="inherit" />,
     secondaryNavbar: true,
     component: Workshop,
+  },
+  {
+    path: "/startup/dap",
+    name: "DAP",
+    icon: <PersonIcon color="inherit" />,
+    secondaryNavbar: true,
+    component: DAPPage,
   }
 ];
 

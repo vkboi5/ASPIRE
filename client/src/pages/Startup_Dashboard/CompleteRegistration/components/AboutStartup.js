@@ -10,7 +10,7 @@ import {
   Checkbox,
 } from "@chakra-ui/react";
 
-const AboutStartup = ({ formData, handleChange, handleSubmit }) => {
+const AboutStartup = ({ formData, handleChange, handleSubmit, handleUploadPicture }) => {
   return (
     <Box>
       <Stack spacing={4}>
@@ -44,6 +44,16 @@ const AboutStartup = ({ formData, handleChange, handleSubmit }) => {
             value={formData.description}
             onChange={handleChange}
             placeholder="Provide a brief description of your startup"
+          />
+        </FormControl>
+
+        <FormControl id="logo" isRequired>
+          <FormLabel>Upload Startup Logo</FormLabel>
+          <Input
+            type="file"
+            name="logo"
+            accept="image/*"
+            onChange={handleUploadPicture}
           />
         </FormControl>
 

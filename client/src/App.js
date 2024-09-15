@@ -32,6 +32,7 @@ import "./pages/YetToBeDone.css";
 import ViewRegistration from './pages/Startup_Dashboard/ViewRegistration/ViewRegistration.js';
 import CompleteRegistration from './pages/Investor_Dashboard/CompleteRegistration/index.js';
 import StartupRegistration from './pages/Startup_Dashboard/CompleteRegistration/index.js';
+import DAPPage from './pages/Startup_Dashboard/CompleteRegistration/components/dap_page.js';
 
 const App = () => {
   const location = useLocation();
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="/investor/dashboard" element={<InvestorDashboard />} />
           <Route path="/investor/profile" element={<InvestorProfile />} />
           <Route path="/investor/posts" element={<InvestorPosts />} />
+          <Route path="/startup/dap" element={<DAPPage />} />
           <Route path="/investor/completeregistration" element={<CompleteRegistration />} />
           <Route path="/startup/startupregistration" element={<StartupRegistration />} />
           <Route path="/startup/viewregistration" element={<ViewRegistration />} />
