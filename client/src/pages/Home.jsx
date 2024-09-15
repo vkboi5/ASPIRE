@@ -1,13 +1,4 @@
-import {
-  Container,
-  Box,
-  Text,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-} from "@chakra-ui/react";
+import {Container,Box,Text,Tab,TabList,TabPanel,TabPanels,Tabs,} from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Login, Signup } from "../components";
@@ -48,7 +39,7 @@ const Home = () => {
         borderWidth="1px"
       >
         <Tabs isFitted variant="soft-rounded">
-          <TabList mb="1em" margin="1rem">
+          <TabList mb="1em" marginTop="5rem">
             <Tab background="#45474B" textColor={"white"} padding="10px" margin="6px">
               Login
             </Tab>
@@ -66,9 +57,7 @@ const Home = () => {
           </TabPanels>
         </Tabs>
       </Box>
-      
     </Container>
-
   );
 };
 

@@ -1,9 +1,9 @@
 /* General Styles */
-.main {
+.frame {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 75vh;
   background-color: #f0f0f0;
 }
 

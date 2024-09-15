@@ -97,7 +97,7 @@ const Login = () => {
   };
 
   return (
-    <main className="main">
+    <main className="frame">
       <div className="container">
         <section className="wrapper">
           <div className="heading">
