@@ -6,7 +6,7 @@ const cors = require("cors");
 const { connectToMongoDB } = require("./config");
 const { userRoutes, chatRoutes, messageRoutes,aiRoutes,imageRoutes,startupRoutes} = require("./routes");
 const { notFound, errorHandler } = require("./middleware");
-
+const { testVerifyPAN, testFetchAccessToken } = require('./middleware/panMiddleware');
 const app = express(); // Use express js in our app
 app.use(express.json()); // Accept JSON data
 require('dotenv').config();
@@ -91,6 +91,9 @@ const io = require("socket.io")(server, {
   pingTimeout: 60 * 1000,
 });
 
+// testFetchAccessToken(); //for testing the access token fetching function 
+// testVerifyPAN(); //for testing the PAN verification function 
+
 io.on("connection", (socket) => {
   console.log("Connected to socket.io");
 
@@ -125,3 +128,5 @@ io.on("connection", (socket) => {
     socket.leave(userData._id);
   });
 });
+
+
