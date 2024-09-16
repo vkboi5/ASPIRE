@@ -8,7 +8,7 @@ Here’s a modern, well-structured version of your GitHub README file for ASPIRE
 ---
 
 <p align="center">
-  <img src="./client/src/assets/logo2.png" alt="ASPIRE Logo" />
+  <img src="./client/src/assets/logo2.png" alt="ASPIRE Logo" width="200" height="200" />
 </p>
 
 ---
@@ -99,7 +99,7 @@ Explore our [Figma Design](https://www.figma.com/design/mKsvTmddyMeRvnxvjhVpB7/A
 ---
 
 <p align="center">
-  <img src="./client/public/Genesis.png" alt="Team Genesis Logo" />
+  <img src="./client/public/Genesis.png" alt="Team Genesis Logo" width="200" height="200" />
 </p>
 
 ---
