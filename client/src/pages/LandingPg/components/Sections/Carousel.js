@@ -1,9 +1,9 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import img1 from "../../assets/c1.png";
-import img2 from "../../assets/c2.png";
-import img3 from "../../assets/c3.png";
+import img1 from "../../assets/slide1.png";
+import img2 from "../../assets/slide2.png";
+import img3 from "../../assets/slide3.jpg";
 import styled from "styled-components";
 
 export default function MyCarousel() {
