@@ -41,7 +41,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     try {
       setLoading(true);
 
-      const response = await fetch(`https://aspirebackend-gywyy55s.b4a.run//api/message/${selectedChat._id}`, {
+      const response = await fetch(`https://aspirebackend-gywyy55s.b4a.run/api/message/${selectedChat._id}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -108,7 +108,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       try {
         setNewMessage(""); // Clear message field before making API call (won't affect API call as the function is asynchronous)
 
-        const response = await fetch("https://aspirebackend-gywyy55s.b4a.run//api/message", {
+        const response = await fetch("https://aspirebackend-gywyy55s.b4a.run/api/message", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${user.token}`,

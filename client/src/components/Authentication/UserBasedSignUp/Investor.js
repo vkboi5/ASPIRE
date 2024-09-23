@@ -133,7 +133,7 @@ const Investor = () => {
 
     // Now submit the data
     try {
-      const response = await fetch("https://aspirebackend-gywyy55s.b4a.run//api/user", {
+      const response = await fetch("https://aspirebackend-gywyy55s.b4a.run/api/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

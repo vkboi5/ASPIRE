@@ -23,7 +23,7 @@ const MyChats = ({ fetchAgain }) => {
 
   const fetchChats = async () => {
     try {
-      const response = await fetch(`https://aspirebackend-gywyy55s.b4a.run//api/chat`, {
+      const response = await fetch(`https://aspirebackend-gywyy55s.b4a.run/api/chat`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${user.token}`,
