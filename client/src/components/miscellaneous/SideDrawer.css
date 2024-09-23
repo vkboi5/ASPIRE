@@ -114,6 +114,7 @@
 
 .adminToggle {
   -webkit-appearance: none;
+  appearance: none;
   position: absolute;
   border-radius: 50%;
   top: 0;

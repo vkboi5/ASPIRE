@@ -135,7 +135,6 @@ const Textarea = styled.textarea`
   line-height: 22px;
   outline: none;
   box-sizing: border-box;
-  background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
   background-size: 30px 30px;
   background-position: 11px 8px;
   background-repeat: no-repeat;
