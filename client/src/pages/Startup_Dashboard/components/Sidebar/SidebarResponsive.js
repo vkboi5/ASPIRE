@@ -1,5 +1,4 @@
-/*eslint-disable*/
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 // chakra imports
 import {
     Box,
@@ -14,12 +13,13 @@ import {
     Stack,
     Text,
     useColorModeValue,
-    useDisclosure
+    useDisclosure,
+    IconButton
 } from "@chakra-ui/react";
 import IconBox from "../Icons/IconBox";
 import { CreativeTimLogo } from "../Icons/Icons";
 import { Separator } from "../Separator/Separator";
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 function SidebarResponsive(props) {
@@ -32,14 +32,20 @@ function SidebarResponsive(props) {
     const activeRoute = (routeName) => {
       return location.pathname === routeName ? "active" : "";
     };
-  
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleSidebar = () => {
+      setIsOpen(!isOpen);
+    };
+
     const createLinks = (routes) => {
       // Chakra Color Mode
       const activeBg = useColorModeValue("white", "gray.700");
       const inactiveBg = useColorModeValue("white", "gray.700");
       const activeColor = useColorModeValue("gray.700", "white");
       const inactiveColor = useColorModeValue("gray.400", "gray.400");
-  
+
       return routes.map((prop, key) => {
         if (prop.redirect) {
           return null;
@@ -171,9 +177,9 @@ function SidebarResponsive(props) {
         );
       });
     };
-    
+
     const { logoText, routes, ...rest } = props;
-  
+
     var links = <>{createLinks(routes)}</>;
     //  BRAND
     //  Chakra Color Mode
@@ -202,9 +208,9 @@ function SidebarResponsive(props) {
         <Separator></Separator>
       </Box>
     );
-  
+
     // SIDEBAR
-    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen: isDrawerOpen, onOpen, onClose } = useDisclosure();
     const btnRef = React.useRef();
     // Color variables
     return (
@@ -213,16 +219,21 @@ function SidebarResponsive(props) {
         ref={mainPanel}
         alignItems="center"
       >
-        <HamburgerIcon
+        <IconButton
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          onClick={toggleSidebar}
           color={hamburgerColor}
           w="18px"
           h="18px"
           ref={btnRef}
           colorScheme="teal"
-          onClick={onOpen}
+          position="fixed"
+          top="80px"  // Adjusted to lower the button
+          left="20px"
+          zIndex="1000"
         />
         <Drawer
-          isOpen={isOpen}
+          isOpen={isDrawerOpen}
           onClose={onClose}
           placement={"left"}
           finalFocusRef={btnRef}
@@ -244,7 +255,7 @@ function SidebarResponsive(props) {
               _hover={{ boxShadow: "none" }}
             />
             <DrawerBody maxW="250px" px="1rem">
-              <Box maxW="100%" h="100vh">
+              <Box maxW="100%" h="100vh" overflowY="auto">
                 <Box>{brand}</Box>
                 <Stack direction="column" mb="40px">
                   <Box>{links}</Box>
@@ -257,4 +268,4 @@ function SidebarResponsive(props) {
     );
   }
 
-  export default SidebarResponsive
+  export default SidebarResponsive;

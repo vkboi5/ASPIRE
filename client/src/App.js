@@ -33,7 +33,7 @@ import ViewRegistration from './pages/Startup_Dashboard/ViewRegistration/ViewReg
 import CompleteRegistration from './pages/Investor_Dashboard/CompleteRegistration/index.js';
 import StartupRegistration from './pages/Startup_Dashboard/CompleteRegistration/index.js';
 import DAPPage from './pages/Startup_Dashboard/CompleteRegistration/components/dap_page.js';
-
+import InAppCoins from './pages/Startup_Dashboard/InAppMarketplace/InAppCoins.js';
 const App = () => {
   const location = useLocation();
   const shouldRenderAdminActions =
@@ -45,6 +45,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<LandingPg />} />
           <Route path="/login" element={<Home />} />
+          <Route path="/startup/inappcoins" element={<InAppCoins />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/investor/dashboard" element={<InvestorDashboard />} />
           <Route path="/investor/profile" element={<InvestorProfile />} />

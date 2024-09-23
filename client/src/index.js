@@ -12,7 +12,7 @@ import { store } from "./pages/Startup_Dashboard/PitchDeck/app/store";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./utils/theme/theme";
 import ChatProvider from "./context/ChatProvider";
-
+import { AuthProvider } from "./utils/Api/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,7 +22,9 @@ root.render(
       <ChakraProvider theme={theme} resetCss={false}>
         <Provider store={store}>
           <ChatProvider>
-            <App />
+            <AuthProvider>
+              <App />
+            </AuthProvider>
           </ChatProvider>
         </Provider>
       </ChakraProvider>

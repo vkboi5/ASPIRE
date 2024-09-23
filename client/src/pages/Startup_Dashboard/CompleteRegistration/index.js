@@ -6,12 +6,15 @@ import {
   FormLabel,
   Input,
   Stack,
+  Avatar,
   Select,
   useColorModeValue,
   Heading,
   Divider,
   Text,
   ChakraProvider,
+  Badge,
+  keyframes,
 } from "@chakra-ui/react";
 import { useState, useRef } from "react";
 import axios from "axios";
@@ -27,6 +30,19 @@ import AboutStartup from './components/AboutStartup.js';
 import { useNavigate } from "react-router-dom";
 import DAP from './components/DAP';
 import { useReactToPrint } from 'react-to-print';
+
+const pulseRing = keyframes`
+  0% {
+    transform: scale(0.33);
+  }
+  40%, 50% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+`;
 
 const statesAndCities = {
   "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Nellore"],
@@ -117,6 +133,8 @@ function StartupRegistration(props) {
 
   const dapRef = useRef();
 
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
   const handlePrint = useReactToPrint({
     content: () => dapRef.current,
   });
@@ -154,7 +172,10 @@ function StartupRegistration(props) {
           location: formData.udyogAadhaar,
           complianceStatus: formData.natureOfEntity,
           interest: formData.interest,
+          email: userInfo.email, // Add email to dapData
         };
+
+        localStorage.setItem('dapData', JSON.stringify(dapData)); // Store dapData with email
 
         navigate("/startup/dap", { state: { dapData } });
       } catch (error) {
@@ -163,7 +184,6 @@ function StartupRegistration(props) {
       }
     }
   };
-
 
   const handleBack = () => {
     setCurrentStep(currentStep - 1);
@@ -196,15 +216,35 @@ function StartupRegistration(props) {
           <PanelContainer>
             <Flex
               minH={"100vh"}
+              marginTop={"100px"}
               align={"center"}
               justify={"center"}
               bg={useColorModeValue("gray.50", "gray.800")}
             >
               <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+                {userInfo && (
+                  <Flex alignItems="center" mb={8} position="relative">
+                    <Avatar size="xl" name={userInfo.name} src={userInfo.profilePicture} />
+                    <Box ml={2}>
+                      <Text fontSize="2xl" fontWeight="bold">{userInfo.username}</Text>
+                      <Text fontSize="md" color="gray.500">{userInfo.email}</Text>
+                    </Box>
+                    <Badge
+                      colorScheme="orange"
+                      borderRadius="full"
+                      px={2}
+                      py={2}
+                      animation={`${pulseRing} 2.5s infinite`}
+                      fontSize={"md"}
+                    >
+                      New
+                    </Badge>
+                  </Flex>
+                )}
                 <Stack align={"center"}>
-                  <Heading fontSize={"4xl"}>Complete Registration</Heading>
+                  <Heading fontSize={"4xl"}>Complete Your Application</Heading>
                   <Text fontSize={"lg"} color={"gray.600"}>
-                    Follow the steps to complete your registration ✌️
+                    Follow the steps to complete your application ✌️
                   </Text>
                 </Stack>
                 <Box width="full">
@@ -268,7 +308,6 @@ function StartupRegistration(props) {
       {isRegistered && (
         <>
           <DAP data={dapData} ref={dapRef} />
-          <Button onClick={handlePrint} mt={4}>Download DAP as PDF</Button>
         </>
       )}
     </ChakraProvider>

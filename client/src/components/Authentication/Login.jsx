@@ -68,7 +68,7 @@ const Login = () => {
 
         const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
         if (userInfo.userType === "startUp") {
-          navigate("/startup/dashboard");
+          navigate("/startup/profile");
         } else if (userInfo.userType === "incubator") {
           navigate("/incubator/dashboard");
         } else if (userInfo.userType === "govtAgency") {

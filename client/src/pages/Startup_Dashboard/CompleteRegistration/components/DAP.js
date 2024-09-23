@@ -13,29 +13,42 @@ import {
 } from "@chakra-ui/react";
 import { QRCodeCanvas } from 'qrcode.react';
 import { useReactToPrint } from 'react-to-print';
+import { useNavigate } from 'react-router-dom';
+import Sidebar from '../../../LandingPg/components/Nav/Sidebar';
 
-const DAP = forwardRef(({ data }, ref) => {
+const DAP = forwardRef(({ data, ...rest }, ref) => {
   const handlePrint = useReactToPrint({
     content: () => ref.current,
   });
 
+  const navigate = useNavigate();
+
   return (
-    <Box p={8} bg="white" color="black" rounded="xl" boxShadow="lg" maxW="800px" mx="auto">
-      <Button
-        onClick={handlePrint}
-        bg="pink.300"
-        color="white"
-        mb={4}
-        _hover={{ bg: "pink.500" }}
-      >
-        Download as PDF
-      </Button>
+    <Box marginTop="150px" p={8} bg="white" color="black" rounded="xl" boxShadow="lg" maxW="800px" mx="auto">
+      <Flex justify="space-between" mb={4}>
+        <Button
+          onClick={() => navigate('/startup/profile')}
+          bg="pink.300"
+          color="white"
+          _hover={{ bg: "pink.500" }}
+        >
+          Back
+        </Button>
+        <Button
+          onClick={handlePrint}
+          bg="pink.300"
+          color="white"
+          _hover={{ bg: "pink.500" }}
+        >
+          Download as PDF
+        </Button>
+      </Flex>
       <Box ref={ref} p={8} bg="white" color="black" rounded="xl" boxShadow="lg">
         <Stack spacing={4}>
           {/* Header Section */}
           <Flex justify="space-between" align="center">
             <Image
-              src="https://via.placeholder.com/150" // Replace with your logo
+              src={data.logo} // Replace with your logo
               alt="Logo"
               boxSize="100px"
             />
