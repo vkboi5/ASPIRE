@@ -3,7 +3,6 @@ import React from "react";
 export default function DialogEn() {
   return (
     <>
-      <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
       <df-messenger
         intent="WELCOME"
         chat-icon="https://i.postimg.cc/hvq6KhLw/png-clipart-internet-bot-chatbot-business-chatbot-avatar-child-face-thumbnail-removebg-preview.png"

@@ -78,17 +78,14 @@ export default function Schemes(props) {
           <PanelContainer style={{ marginTop: "50px" }}>
             <Grid templateColumns="repeat(3, 1fr)" gap={3}>
               <Card
-                img="https://thumbs.dreamstime.com/b/professional-investor-advise-investment-use-green-growth-graph-bar-graph-hold-paper-pencil-coins-98478183.jpg"
                 name="Yash Patil"
                 desc="I invest in innovative fintech startups to drive financial technology advancements and capitalize on the evolving financial services landscape."
               />
               <Card
-                img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuo1y2Gg2t8jXwKBBdLzexnf3nCW8jAW-42w&usqp=CAU"
                 name="Aditya Yadav"
                 desc="With a decade of experience in the healthcare sector, I invest in cutting-edge medical technology startups to revolutionize patient care and improve healthcare outcomes."
               />
               <Card
-                img="https://www.bankrate.com/2022/09/01163449/women-and-investing.jpeg?auto=webp&optimize=high&crop=16:9"
                 name="Riya Shah"
                 desc="Leveraging my background in renewable energy, I invest in sustainable energy solutions to combat climate change and create a more environmentally conscious future."
               />
