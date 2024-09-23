@@ -14,7 +14,7 @@ const Footer = () => {
                 <div className="footer-logo">
                   <a href="index.html">
                     <img
-                      src="http://localhost:3000/static/media/logo2.94ebbf2a18b3269d61ec.png"
+                      src="https://aspirebackend-gywyy55s.b4a.run/static/media/logo2.94ebbf2a18b3269d61ec.png"
                       className="img-fluid"
                       alt="logo"
                     />
