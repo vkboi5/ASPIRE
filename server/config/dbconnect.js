@@ -5,12 +5,10 @@ function connect() {
   const mongooseOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    autoIndex: process.env.NODE_ENV !== "prod"
+    autoIndex: process.env.NODE_ENV_PROD !== "prod"
   };
 
-  if (process.env.NODE_ENV === "prod") {
-    connectionString = process.env.MONGO_URI_PROD;
-  }
+  const connectionString = process.env.MONGO_URI_PROD;
 
   mongoose.connect(connectionString, mongooseOptions);
   mongoose.Promise = global.Promise;

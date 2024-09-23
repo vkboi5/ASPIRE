@@ -2,21 +2,27 @@ const express = require("express");
 const dotenv = require("dotenv");
 const path = require("path");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
 const { connectToMongoDB } = require("./config");
-const { userRoutes, chatRoutes, messageRoutes,aiRoutes,imageRoutes,startupRoutes} = require("./routes");
+const { userRoutes, chatRoutes, messageRoutes, aiRoutes, imageRoutes, startupRoutes } = require("./routes");
 const { notFound, errorHandler } = require("./middleware");
 const { testVerifyPAN, testFetchAccessToken } = require('./middleware/panMiddleware');
+const BlacklistedToken = require('./models/BlacklistedToken');
+
 const app = express(); // Use express js in our app
 app.use(express.json()); // Accept JSON data
 require('dotenv').config();
 
 dotenv.config({ path: path.join(__dirname, "@/env") }); // Specify a custom path if your file containing environment variables is located elsewhere
 connectToMongoDB(); // Connect to Database
+
 var corsOptions = {
   origin: "*",
   optionsSuccessStatus: 200, // For legacy browser support
 };
+
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 
 app.use(cors(corsOptions));
@@ -42,6 +48,7 @@ if (process.env.NODE_ENV === "production") {
     res.send("API is running");
   });
 }
+
 app.get('/validate', (req, res) => {
   const token = req.headers['authorization'];
 
@@ -53,8 +60,20 @@ app.get('/validate', (req, res) => {
   });
 });
 
+// Middleware to check if a token is blacklisted
+const isBlacklisted = async (req, res, next) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  const blacklisted = await BlacklistedToken.findOne({ token });
+  if (blacklisted) return res.status(403).send("Token is blacklisted");
+  next();
+};
+
 // Route for user logout (client-side action)
-app.post('/logout', (req, res) => {
+app.post('/logout', async (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1];
+  if (token) {
+    await new BlacklistedToken({ token }).save();
+  }
   res.json({ message: 'Logged out' });
 });
 
@@ -67,14 +86,6 @@ const verifyToken = (req, res, next) => {
     req.user = decoded;
     next();
   });
-};// Logout Route
-
-// Middleware to check if a token is blacklisted
-const isBlacklisted = async (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
-  const blacklisted = await redisClient.get(token);
-  if (blacklisted) return res.status(403).send("Token is blacklisted");
-  next();
 };
 
 app.use(notFound); // Handle invalid routes
@@ -128,5 +139,3 @@ io.on("connection", (socket) => {
     socket.leave(userData._id);
   });
 });
-
-
