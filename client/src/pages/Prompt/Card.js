@@ -10,18 +10,18 @@ function Card({ text }) {
     setIndex(0); // Reset the index as well
   }, [text]);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (index < text.length) {
-        setDisplayText((prevText) => prevText + text.charAt(index));
-        setIndex(index + 1);
-      }
-    }, 10); // Adjust the delay (in milliseconds) between letters
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     if (index < text.length) {
+  //       setDisplayText((prevText) => prevText + text.charAt(index));
+  //       setIndex(index + 1);
+  //     }
+  //   }, 10); // Adjust the delay (in milliseconds) between letters
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, [text, index]);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, [text, index]);
 
   return (
     <div className="w-full mx-auto py-4 px-8 flex items-center bg-white rounded-lg shadow-lg">

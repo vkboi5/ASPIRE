@@ -138,30 +138,30 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
-  const typingHandler = (e) => {
-    setNewMessage(e.target.value);
+  // const typingHandler = (e) => {
+  //   setNewMessage(e.target.value);
 
-    // Typing Indicator Logic
-    if (!socketConnected) return;
+  //   // Typing Indicator Logic
+  //   if (!socketConnected) return;
 
-    if (!typing) {
-      setTyping(true);
-      socket.emit("typing", selectedChat._id);
-    }
+  //   if (!typing) {
+  //     setTyping(true);
+  //     socket.emit("typing", selectedChat._id);
+  //   }
 
-    let lastTypingTime = new Date().getTime();
-    let timerLength = 3000;
+  //   let lastTypingTime = new Date().getTime();
+  //   let timerLength = 3000;
 
-    setTimeout(() => {
-      let timeNow = new Date().getTime();
-      let timeDiff = timeNow - lastTypingTime;
+  //   setTimeout(() => {
+  //     let timeNow = new Date().getTime();
+  //     let timeDiff = timeNow - lastTypingTime;
 
-      if (timeDiff >= timerLength && typing) {
-        socket.emit("stop typing", selectedChat._id);
-        setTyping(false);
-      }
-    }, timerLength);
-  };
+  //     if (timeDiff >= timerLength && typing) {
+  //       socket.emit("stop typing", selectedChat._id);
+  //       setTyping(false);
+  //     }
+  //   }, timerLength);
+  // };
 
   return (
     <>
@@ -237,7 +237,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 bg="#E0E0E0"
                 placeholder="Enter a message.."
                 value={newMessage}
-                onChange={(e) => typingHandler(e)}
+                // onChange={(e) => typingHandler(e)}
               />
             </FormControl>
           </Box>
