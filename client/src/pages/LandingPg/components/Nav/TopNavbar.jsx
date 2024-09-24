@@ -245,21 +245,20 @@ const TopNavbar = () => {
 };
 
 const Wrapper = styled.nav`
-  width: calc(100% - 40px); /* Smaller from left and right */
-  margin: 0 20px; /* Centered with margin */
+  width: 100%; /* Full width without any margin */
+  margin: 0; /* Removed margin */
   position: fixed;
-  top: 10px; /* Adjusted from top */
+  top: 0; /* Adjusted from top */
   left: 0;
   right: 0;
   z-index: 999;
   padding: 10px 20px;
   background: rgba(255, 255, 255, 0.2); /* Transparent background */
   backdrop-filter: blur(10px); /* Glassmorphism effect */
-  border-radius: 15px; /* Curved edges */
+  border-radius: 0; /* No curved edges */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Border for glass effect */
 `;
-
 const NavInner = styled.div`
   position: relative;
   height: 100%;
