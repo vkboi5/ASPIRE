@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import "font-awesome/css/font-awesome.min.css";
 import "./a.css";
 import Layout from "./Layout.js";
@@ -35,9 +35,7 @@ import StartupRegistration from './pages/Startup_Dashboard/CompleteRegistration/
 import DAPPage from './pages/Startup_Dashboard/CompleteRegistration/components/dap_page.js';
 import InAppCoins from './pages/Startup_Dashboard/InAppMarketplace/InAppCoins.js';
 const App = () => {
-  const location = useLocation();
-  const shouldRenderAdminActions =
-    location.pathname !== "/login" && location.pathname !== "/";
+
 
   return (
     <div className="App">
@@ -74,22 +72,6 @@ const App = () => {
           <Route path="/ai" element={<AIQueryBox />} />
         </Route>
       </Routes>
-      {shouldRenderAdminActions && (
-        <div className="adminActions">
-          <input type="checkbox" name="adminToggle" className="adminToggle" />
-          <a className="adminButton" href="#!">
-            <i className="fa fa-bars"></i>
-          </a>
-          <div className="adminButtons">
-            <a href="/bot" title="Bot">
-              <i className="fa fa-robot"></i>
-            </a>
-            <a href="/chats" title="Chat">
-              <i className="fa fa-comments"></i>
-            </a>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
